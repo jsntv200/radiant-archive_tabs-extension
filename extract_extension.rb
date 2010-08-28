@@ -5,8 +5,8 @@ class ExtractExtension < Radiant::Extension
 
   extension_config do |config|
     config.after_initialize do      
-      unless Radiant::Config['extract.date_format']
-        Radiant::Config['extract.date_format'] = '%d-%m-%Y'
+      unless Radiant::Config['admin.date_format']
+        Radiant::Config['admin.date_format'] = '%d-%m-%Y'
       end
     end
   end
