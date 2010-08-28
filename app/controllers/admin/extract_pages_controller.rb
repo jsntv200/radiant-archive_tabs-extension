@@ -1,5 +1,5 @@
 class Admin::ExtractPagesController < Admin::PagesController
-  paginate_models :per_page => Radiant::Config['extract.per_page']
+  paginate_models
 
   def index
     options = pagination_parameters.merge({

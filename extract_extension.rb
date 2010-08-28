@@ -8,10 +8,6 @@ class ExtractExtension < Radiant::Extension
       unless Radiant::Config['extract.date_format']
         Radiant::Config['extract.date_format'] = '%d-%m-%Y'
       end
-
-      unless Radiant::Config['extract.per_page']
-        Radiant::Config['extract.per_page'] = 20
-      end
     end
   end
 
