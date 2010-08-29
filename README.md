@@ -8,6 +8,6 @@ It's a monkey patch so use at your own risk.
 
 ## To Do
 
-- Write some specs
-- The on save redirect isn't always correct
-- Highlight the correct tab when editing
+- Write some specs.
+- The on save redirect isn't always correct.
+- Highlight the correct tab when editing.
