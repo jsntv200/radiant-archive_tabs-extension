@@ -10,7 +10,7 @@
         %td.status{:class => "#{page.status.name.downcase}_status", :title => "#{timestamp(page.published_at) if page.published_at}"}= t(page.status.name.downcase)
     - node.published_on_column do
       - unless simple
-        %td.published_on{:class => "status"}= page.published_at.strftime(Radiant::Config['admin.date_format'])
+        %td.published_on{:class => "status"}= page.published_at.strftime(Radiant::Config['admin.date_format']) if page.published_at
     - node.modify_column do
       - unless simple
         %td.remove= link_to t('remove'), remove_admin_page_url(page)
