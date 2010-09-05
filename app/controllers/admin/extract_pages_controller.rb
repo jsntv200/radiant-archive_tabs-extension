@@ -1,6 +1,4 @@
 class Admin::ExtractPagesController < Admin::PagesController
-  paginate_models
-
   def index
     options = pagination_parameters.merge({
       :order      => 'virtual DESC, published_at DESC, id DESC',
