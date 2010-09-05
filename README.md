@@ -9,5 +9,4 @@ It's a monkey patch so use at your own risk.
 ## To Do
 
 - Write some specs.
-- The on save redirect isn't always correct.
-- Highlight the correct tab when editing.
+- Look into cleaning up the views.
