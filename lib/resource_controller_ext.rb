@@ -5,7 +5,7 @@ module Extract
         protected
         
         def continue_url_with_extract(options)
-          if child_of_extract?
+          if defined?(model.is_extract?) && model.is_extract?
             options[:redirect_to] || (params[:continue] ? edit_admin_extract_child_url(model.parent, model) : index_page_for_model_with_extract)
           else
             continue_url_without_extract(options)
@@ -19,10 +19,6 @@ module Extract
           p = (i / pagination_parameters[:per_page].to_i) + 1
           parts[:p] = p if p && p > 1
           parts
-        end
-
-        def child_of_extract?
-          model.parent.is_a?(ExtractPage) || model.parent.is_a?(ExtractArchivePage)
         end
       }
     end
