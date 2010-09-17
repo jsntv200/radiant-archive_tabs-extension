@@ -49,6 +49,6 @@
       = save_model_button(@page)
       = save_model_and_continue_editing_button(@page)
       = t('or')
-      = link_to t('cancel'), @page.parent.is_a?(ExtractPage) || @page.parent.is_a?(ExtractArchivePage) ? request.env["HTTP_REFERER"] : admin_pages_url
+      = link_to t('cancel'), @page.parent.is_extract? ? request.env["HTTP_REFERER"] : admin_pages_url
   - form_bottom.edit_timestamp do
     = updated_stamp @page

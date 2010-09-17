@@ -1,6 +1,4 @@
-# require_dependency 'application_controller'
-require File.dirname(__FILE__)+'/lib/resource_controller_ext'
-
+Dir.glob(File.dirname(__FILE__) + '/lib/*') {|file| require_dependency file unless File.directory?(file)}
 
 class ExtractExtension < Radiant::Extension
   version "1.0"
@@ -18,6 +16,8 @@ class ExtractExtension < Radiant::Extension
   def activate
     ExtractPage
     ExtractArchivePage
+    
+    Page.send :include, Extract::PageExt
     
     # Patches to correctly redirect after a "Save", "Save And Continue" or "Cancel" action
     Admin::ResourceController.send :include, Extract::ResourceControllerExt
