@@ -18,7 +18,7 @@ class ExtractExtension < Radiant::Extension
     ExtractArchivePage
     
     Page.send :include, Extract::PageExt
-    
+
     # Patches to correctly redirect after a "Save", "Save And Continue" or "Cancel" action
     Admin::ResourceController.send :include, Extract::ResourceControllerExt
 
@@ -31,8 +31,8 @@ class ExtractExtension < Radiant::Extension
   end
 
   def set_tab
-    pages = Page.find(:all, :order => "slug DESC", :conditions => ["class_name = ? OR class_name = ?", "ExtractPage", "ExtractArchivePage"])
-    
+    pages = Page.find_all_by_class_name(["ExtractPage", "ExtractArchivePage"], :order => "slug DESC")    
+        
     tab 'Content' do
       pages.each do |page|
         add_item page.title, "/admin/extracts/#{page.id}/children", :before => "Assets"

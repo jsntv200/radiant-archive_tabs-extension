@@ -3,13 +3,13 @@ class Admin::ExtractsController < Admin::PagesController
   
   def index
     options = pagination_parameters.merge({
-      :order      => 'virtual DESC, published_at DESC, id DESC',
-      :conditions => {'parent_id' => params[:page_id]}
+      :order      => 'virtual ASC, status_id ASC, published_at DESC, id DESC',
+      :conditions => params[:search] ? ['LOWER(title) LIKE ?', "%#{params[:search].downcase}%"] : nil
     })
-
-    @parent = Page.find_by_id(params[:page_id])
-    @pages  = Page.paginate(options)
-
+    
+    @page     = Page.find_by_id(params[:page_id])
+    @children = @page.children.paginate(options)
+    
     response_for :plural
   end
 end

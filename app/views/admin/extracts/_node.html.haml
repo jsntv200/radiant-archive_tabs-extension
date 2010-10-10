@@ -3,7 +3,7 @@
     - node.title_column do
       %td.page{:style => "padding-left: #{padding_left(level)}px"}
         %span.w1
-          = link_to("#{icon} #{node_title}", edit_admin_extract_child_url(@parent, page), :title => page.url)
+          = link_to("#{icon} #{node_title}", edit_admin_extract_child_url(@page, page), :title => page.url)
           = page_type
     - node.status_column do
       - unless simple
