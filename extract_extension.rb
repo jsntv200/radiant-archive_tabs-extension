@@ -1,22 +1,15 @@
-Dir.glob(File.dirname(__FILE__) + '/lib/*') {|file| require_dependency file unless File.directory?(file)}
+require 'radiant-extract-extension/version'
 
 class ExtractExtension < Radiant::Extension
-  version "1.0"
-  description "Extract a pages children into its own paginated tab within the admin"
-  url "http://github.com/jsntv200/extract"
+  version RadiantExtractExtension::VERSION
+  description "Provides page types that will extract a pages children into its own paginated tab"
+  url "http://github.com/jsntv200/radiant-extract-extension"
 
-  extension_config do |config|
-    config.after_initialize do      
-      unless Radiant::Config['admin.date_format']
-        Radiant::Config['admin.date_format'] = '%d-%m-%Y'
-      end
-    end
-  end
 
   def activate
     ExtractPage
     ExtractArchivePage
-    
+
     Page.send :include, Extract::PageExt
 
     # Patches to correctly redirect after a "Save", "Save And Continue" or "Cancel" action
@@ -32,14 +25,14 @@ class ExtractExtension < Radiant::Extension
 
   def set_tab
     pages = Page.find_all_by_class_name(["ExtractPage", "ExtractArchivePage"], :order => "slug DESC")    
-        
+
     tab 'Content' do
       pages.each do |page|
         add_item page.title, "/admin/extracts/#{page.id}/children", :before => "Assets"
       end
     end if pages
   end
-  
+
   def load_default_settings_regions
     returning OpenStruct.new do |settings|
       settings.index = Radiant::AdminUI::RegionSet.new do |index|
