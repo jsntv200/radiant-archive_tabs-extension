@@ -1,0 +1,28 @@
+- @page_title = t('pages') + ' - ' + default_page_title
+
+.outset
+  = render_region :top
+  %table.index#pages{:summary=>t('page_hierarchy')}
+    %thead
+      %tr
+        - render_region :sitemap_head do |sitemap_head|
+          - sitemap_head.title_column_header do
+            %th.name= t('page') 
+          - sitemap_head.status_column_header do
+            %th.status= t('status')
+          - sitemap_head.actions_column_header do
+            %th.actions= t('modify')
+    %tbody#extract
+      - if model
+        - models.each do |child|
+          = render_node child
+      - else
+        %tr
+          %td.empty{:colspan => admin.page.index.node.length}= t('no_pages')
+  = render_region :bottom
+
+#actions
+  = pagination_for(models)
+
+  %ul
+    %li= link_to image('plus') + " " + t('add_new') + " " + model.title.singularize, new_admin_page_child_path, :class => 'action_button'

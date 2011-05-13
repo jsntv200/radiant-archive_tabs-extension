@@ -1,22 +1,3 @@
-begin
-  require 'jeweler'
-  Jeweler::Tasks.new do |gem|
-    gem.name = "radiant-extract-extension"
-    gem.summary = %Q{Extract Extension for Radiant CMS}
-    gem.description = %Q{Describe your extension here}
-    gem.email = "your email"
-    gem.homepage = "http://yourwebsite.com/extract"
-    gem.authors = ["Your Name"]
-    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
-  end
-rescue LoadError
-  puts "Jeweler (or a dependency) not available. This is only required if you plan to package extract as a gem."
-end
-
-# In rails 1.2, plugins aren't available in the path until they're loaded.
-# Check to see if the rspec plugin is installed first and require
-# it if it is.  If not, use the gem version.
-
 # Determine where the RSpec plugin is by loading the boot
 unless defined? RADIANT_ROOT
   ENV["RAILS_ENV"] = "test"
@@ -45,7 +26,7 @@ Object.send(:remove_const, :RADIANT_ROOT)
 
 extension_root = File.expand_path(File.dirname(__FILE__))
 
-task :default => :spec
+task :default => [:spec, :features]
 task :stats => "spec:statsetup"
 
 desc "Run all specs in spec directory"
@@ -122,14 +103,6 @@ Rake::RDocTask.new(:rdoc) do |rdoc|
   rdoc.options << '--line-numbers' << '--inline-source'
   rdoc.rdoc_files.include('README')
   rdoc.rdoc_files.include('lib/**/*.rb')
-end
-
-# For extensions that are in transition
-desc 'Test the extract extension.'
-Rake::TestTask.new(:test) do |t|
-  t.libs << 'lib'
-  t.pattern = 'test/**/*_test.rb'
-  t.verbose = true
 end
 
 # Load any custom rakefiles for extension

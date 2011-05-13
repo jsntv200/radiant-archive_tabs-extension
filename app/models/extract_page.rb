@@ -1,2 +1,2 @@
-class ExtractPage < Page
+class ExtractPage < ArchivePage
 end

@@ -1,46 +1,39 @@
 require 'radiant-extract-extension/version'
+require 'radiant-extract-extension/admin/node_helper'
 
 class ExtractExtension < Radiant::Extension
   version RadiantExtractExtension::VERSION
-  description "Provides page types that will extract a pages children into its own paginated tab"
+  description "Provides page types that will extract the pages children into a paginated tab"
   url "http://github.com/jsntv200/radiant-extract-extension"
 
-
   def activate
-    ExtractPage
-    ExtractArchivePage
+    Admin::NodeHelper.send :include, RadiantExtractExtension::Admin::NodeHelper
 
-    Page.send :include, Extract::PageExt
+    Admin::PagesController.class_eval do
+      paginate_models :per_page => 1
 
-    # Patches to correctly redirect after a "Save", "Save And Continue" or "Cancel" action
-    Admin::ResourceController.send :include, Extract::ResourceControllerExt
+      def index_with_extract
+        if request.path.match('/admin/pages/\d+/children/?(.html)?(\?p(age)?=\d+)?$').nil? == false
+          self.model = Page.find(params[:page_id])
+          render :action => 'extract_index'
+        else
+          params[:pp] = 'all'
+          index_without_extract
+        end
+      end
+      alias_method_chain :index, :extract
+    end
 
-    # Index page UI elements
-    admin.class_eval { attr_accessor :extracts }
-    admin.extracts = load_default_settings_regions
-
-    # Display the Tabs
     set_tab
   end
 
   def set_tab
-    pages = Page.find_all_by_class_name(["ExtractPage", "ExtractArchivePage"], :order => "slug DESC")    
+    pages = Page.find(:all, :order => "slug DESC", :conditions => ["class_name = ? OR class_name = ?", "ExtractPage", "ExtractArchivePage"])
 
     tab 'Content' do
       pages.each do |page|
-        add_item page.title, "/admin/extracts/#{page.id}/children", :before => "Assets"
+        add_item page.title, "/admin/pages/#{page.id}/children"
       end
     end if pages
-  end
-
-  def load_default_settings_regions
-    returning OpenStruct.new do |settings|
-      settings.index = Radiant::AdminUI::RegionSet.new do |index|
-        index.top.concat %w{}
-        index.sitemap_head.concat %w{title_column_header status_column_header published_on_column_header modify_column_header}
-        index.node.concat %w{title_column status_column published_on_column modify_column}
-        index.bottom.concat %w{}
-      end
-    end
   end
 end
