@@ -6,7 +6,7 @@ module RadiantExtractExtension
           alias_method_chain :expanded, :extract
           alias_method_chain :expander, :extract
           alias_method_chain :children_class, :extract
-          #alias_method_chain :children_for, :extract
+          alias_method_chain :children_for, :extract
         end
       end
 
@@ -25,8 +25,9 @@ module RadiantExtractExtension
         @current_node.extracted? ? ' no_children' : children_class_without_extract
       end
 
+      # Disable adding children on a extracted pages children index
       def children_for_with_extract(page)
-        # page.parent.extracted? ? [] : children_for_without_extract(page)
+        defined?(page.parent.extracted?) && page.parent.extracted? ? [] : children_for_without_extract(page)
       end
     end
   end
