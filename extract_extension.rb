@@ -24,7 +24,7 @@ class ExtractExtension < Radiant::Extension
       alias_method_chain :index, :extract
     end
 
-    set_tab
+    set_tab if Page.table_exists?
   end
 
   def set_tab
