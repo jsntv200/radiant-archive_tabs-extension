@@ -1,6 +1,6 @@
 = Extract
 
-Extract a pages children into it's own paginated tab. Words best for pages like News that can get many children and require a paginated insterface in the admin
+Extract a pages children into it's own paginated tab. Words best for pages like News that can get many children and require a paginated insterface in the admin.
 
 Once set the children will no longer display in the default Radiant Admin but within it's own paginated tab.
 
@@ -10,4 +10,4 @@ It's a monkey patch so use at your own risk.
 = To Do
 
 - Write some specs.
-- Look into cleaning up the views.
+- Maybe add a search filter

@@ -27,7 +27,7 @@ module RadiantExtractExtension
 
       # Disable adding children on a extracted pages children index
       def children_for_with_extract(page)
-        defined?(page.parent.extracted?) && page.parent.extracted? ? [] : children_for_without_extract(page)
+        page.parent.respond_to?(:extracted?) && page.parent.extracted? ? [] : children_for_without_extract(page)
       end
     end
   end
