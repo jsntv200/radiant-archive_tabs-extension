@@ -14,7 +14,7 @@ module RadiantExtractExtension
 
           if self.model.extracted?
             class << self
-              paginate_models :per_page => 1
+              paginate_models :per_page => Radiant.config['admin.extract.per_page']
             end
           end
 

@@ -1,3 +1,3 @@
 Radiant.config do |config|
-  # config.define "setting.name", :default => 'value', :select_from => ['foo', 'bar']
+  config.define 'admin.extract.per_page', :default => 50
 end

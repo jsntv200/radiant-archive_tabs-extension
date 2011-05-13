@@ -22,7 +22,7 @@
   = render_region :bottom
 
 #actions
-  = pagination_for(models)
+  = pagination_for(models, :depaginate => false)
 
   %ul
     %li= link_to image('plus') + " " + t('add_new') + " " + model.title.singularize, new_admin_page_child_path, :class => 'action_button'
