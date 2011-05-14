@@ -3,8 +3,7 @@ module RadiantExtractExtension
     module NodeHelper
       def self.included(base)
         base.class_eval do
-          # test for extracted so Radiant core specs pass
-          # TODO: refactor, it's reproduced in pages_controller
+          # TODO: duplicated in pages_controller
           def extracted?(page)
             page.class == ExtractPage
           end
