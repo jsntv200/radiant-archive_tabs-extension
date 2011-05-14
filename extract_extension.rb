@@ -1,5 +1,4 @@
 require 'radiant-extract-extension/version'
-require 'radiant-extract-extension/page_extension'
 require 'radiant-extract-extension/admin/node_helper'
 require 'radiant-extract-extension/admin/pages_controller'
 
