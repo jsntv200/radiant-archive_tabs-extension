@@ -9,14 +9,13 @@ class ExtractExtension < Radiant::Extension
   url "http://github.com/jsntv200/radiant-extract-extension"
 
   def activate
-    Page.send :include, RadiantExtractExtension::PageExtension
     Admin::NodeHelper.send :include, RadiantExtractExtension::Admin::NodeHelper
     Admin::PagesController.send :include, RadiantExtractExtension::Admin::PagesController
     content_tab if Page.table_exists?
   end
 
   def content_tab
-    class_names = ["ExtractPage", "ExtractArchivePage"]
+    class_names = ["ExtractPage"]
     pages = Page.find(:all, :order => "slug DESC", :conditions => ["class_name IN (?)", class_names])
 
     tab 'Content' do

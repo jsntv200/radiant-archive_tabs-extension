@@ -23,6 +23,7 @@ describe Admin::NodeHelper do
 
   it "should return no children if the parent is an ExtractPage" do
     @page = mock_model(Page)
+    @page.stub!(:extracted?).and_return(false)
     @page.stub!(:parent).and_return(@extract)
     assigns[:current_node] = @page
     helper.children_for(@page).should == []

@@ -9,5 +9,7 @@ It's a monkey patch so use at your own risk.
 
 = To Do
 
-- Write some specs.
-- Maybe add a search filter
+- Write specs.
+- Enable roles so only Admin / Desing can create Extract Pages types. (allowed_children)
+- Redirect on Save / Cancel to the correct page.
+- Add search filter ?
