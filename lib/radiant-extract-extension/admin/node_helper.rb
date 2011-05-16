@@ -15,22 +15,22 @@ module RadiantExtractExtension
         end
       end
 
-      # Never render the children
+      # Never render the children on admin/pages
       def expanded_with_extract
         extracted?(@current_node) ? false : expanded_without_extract
       end
 
-      # Don't display the expander arrow
+      # Don't display the expander arrow on admin/pages
       def expander_with_extract(level)
         extracted?(@current_node) ? '' : expander_without_extract(level)
       end
 
-      # Force the no_children class so the SiteMapBehavior js will ignore an extract row
+      # Force the no_children class to diable the SiteMapBehavior js on admin/pages
       def children_class_with_extract
         extracted?(@current_node) ? ' no_children' : children_class_without_extract
       end
 
-      # Disable adding children on a extracted pages children index
+      # Disable adding children on the index page, admin/pages/:page_id/children
       def children_for_with_extract(page)
         page.respond_to?(:parent) && extracted?(page.parent) ? [] : children_for_without_extract(page)
       end
