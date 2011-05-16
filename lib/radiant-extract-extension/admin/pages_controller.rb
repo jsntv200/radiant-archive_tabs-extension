@@ -3,14 +3,19 @@ module RadiantExtractExtension
     module PagesController
       def self.included(base)
         base.class_eval do
+          before_filter :include_assets
+          alias_method_chain :load_models, :extract
+          alias_method_chain :index, :extract
+
           # TODO: duplicated in node_helper
           def extracted?(page)
             page.class == ExtractPage
           end
+       end
+      end
 
-          alias_method_chain :load_models, :extract
-          alias_method_chain :index, :extract
-        end
+      def include_assets
+        include_javascript 'admin/extract' if self.model.respond_to?(:parent) && extracted?(self.model.parent)
       end
 
       def load_models_with_extract
