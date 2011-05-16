@@ -4,13 +4,15 @@ module RadiantExtractExtension
       def self.included(base)
         base.class_eval do
           before_filter :include_assets
-          alias_method_chain :load_models, :extract
-          alias_method_chain :index, :extract
 
           # TODO: duplicated in node_helper
           def extracted?(page)
             page.class == ExtractPage
           end
+
+          alias_method_chain :load_models, :extract
+          alias_method_chain :index, :extract
+          alias_method_chain :index_page_for_model, :extract
        end
       end
 
@@ -39,7 +41,16 @@ module RadiantExtractExtension
           index_without_extract
         end
       end
+
+      def index_page_for_model_with_extract
+        parts = index_page_for_model_without_extract
+
+        if extracted?(self.model.parent)
+          parts[:page_id] = self.model.parent_id
+        end
+
+        parts
+      end
     end
   end
 end
-
