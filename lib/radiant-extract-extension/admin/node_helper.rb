@@ -5,7 +5,7 @@ module RadiantExtractExtension
         base.class_eval do
           # TODO: duplicated in pages_controller
           def extracted?(page)
-            page.class == ExtractPage
+            page.class == ArchivePage
           end
 
           alias_method_chain :expanded, :extract

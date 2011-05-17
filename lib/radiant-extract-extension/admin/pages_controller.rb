@@ -3,11 +3,12 @@ module RadiantExtractExtension
     module PagesController
       def self.included(base)
         base.class_eval do
+          # TODO: change this inline js
           before_filter :include_assets
 
           # TODO: duplicated in node_helper
           def extracted?(page)
-            page.class == ExtractPage
+            page.class == ArchivePage
           end
 
           alias_method_chain :load_models, :extract
@@ -16,6 +17,7 @@ module RadiantExtractExtension
        end
       end
 
+      # TODO: change this inline js
       def include_assets
         include_javascript 'admin/extract' if self.model.respond_to?(:parent) && extracted?(self.model.parent)
       end
