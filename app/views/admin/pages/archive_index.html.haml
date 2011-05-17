@@ -26,3 +26,13 @@
 
   %ul
     %li= link_to image('plus') + ' ' + t('add') + ' ' + model.title.singularize, new_admin_page_child_path, :class => 'action_button'
+
+:javascript
+  function redirect_pagination(element) {
+    // TODO: Should be able to handle this in will_paginate
+    var element = Event.element(event);
+    window.location = element.readAttribute('href').replace('.html', '')
+    event.stop()
+  }
+
+  $$('.pagination a').invoke('observe', 'click', redirect_pagination)
