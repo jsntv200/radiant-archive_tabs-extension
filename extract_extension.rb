@@ -10,7 +10,6 @@ class ExtractExtension < Radiant::Extension
   def activate
     Admin::NodeHelper.send :include, RadiantExtractExtension::Admin::NodeHelper
     Admin::PagesController.send :include, RadiantExtractExtension::Admin::PagesController
-    admin.page.edit.add :form, 'extract_form'
     content_tab if Page.table_exists?
   end
 

@@ -12,6 +12,7 @@ module RadiantExtractExtension
 
           alias_method_chain :load_models, :extract
           alias_method_chain :index, :extract
+          alias_method_chain :index_page_for_model, :extract
        end
       end
 
@@ -24,7 +25,7 @@ module RadiantExtractExtension
           self.model = Page.find(params[:page_id])
 
           if extracted?(self.model)
-            self.class.paginate_models :per_page => Radiant.config['admin.extract.per_page']
+            self.class.paginate_models :per_page => Radiant.config['admin.pagination.per_page']
           end
 
           load_models_without_extract
@@ -36,6 +37,21 @@ module RadiantExtractExtension
           render :action => 'extract_index'
         else
           index_without_extract
+        end
+      end
+
+      def index_page_for_model_with_extract
+        if model && extracted?(model.parent)
+          parts = {:action => "index", :page_id => model.parent_id}
+
+          if i = model.parent.children.index(model)
+            p = (i / pagination_parameters[:per_page].to_i) + 1
+            parts[:p] = p if p && p > 1
+          end
+
+          parts
+        else
+          index_page_for_model_without_extract
         end
       end
     end
