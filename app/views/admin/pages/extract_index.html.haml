@@ -13,7 +13,7 @@
           - sitemap_head.actions_column_header do
             %th.actions= t('modify')
     %tbody#extract
-      - if model
+      - if models
         - models.each do |child|
           = render_node child
       - else
@@ -25,4 +25,4 @@
   = pagination_for(models, :depaginate => false)
 
   %ul
-    %li= link_to image('plus') + " " + t('add_new') + " " + model.title.singularize, new_admin_page_child_path, :class => 'action_button'
+    %li= link_to image('plus') + ' ' + t('add') + ' ' + model.title.singularize, new_admin_page_child_path, :class => 'action_button'
