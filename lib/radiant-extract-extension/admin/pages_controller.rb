@@ -27,9 +27,9 @@ module RadiantExtractExtension
           if extracted?(self.model)
             self.class.paginate_models :per_page => Radiant.config['admin.pagination.per_page']
           end
-
-          load_models_without_extract
         end
+
+        load_models_without_extract
       end
 
       def index_with_extract
@@ -44,7 +44,7 @@ module RadiantExtractExtension
         if model && extracted?(model.parent)
           parts = {:action => "index", :page_id => model.parent_id}
 
-          if i = model.parent.children.index(model)
+          if i = model.self_and_siblings.index(model)
             p = (i / pagination_parameters[:per_page].to_i) + 1
             parts[:p] = p if p && p > 1
           end
