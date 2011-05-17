@@ -4,7 +4,7 @@ require 'radiant-extract-extension/admin/pages_controller'
 
 class ExtractExtension < Radiant::Extension
   version RadiantExtractExtension::VERSION
-  description "Provides page types that will extract the pages children into a paginated tab"
+  description "Extract archive pages into their own paginated tab within the admin"
   url "http://github.com/jsntv200/radiant-extract-extension"
 
   def activate

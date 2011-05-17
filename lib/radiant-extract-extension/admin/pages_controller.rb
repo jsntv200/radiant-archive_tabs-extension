@@ -24,6 +24,8 @@ module RadiantExtractExtension
 
       def load_models_with_extract
         if params[:page_id]
+          Page.acts_as_tree :order => 'published_at DESC'
+
           self.model = Page.find(params[:page_id])
 
           if extracted?(self.model)
