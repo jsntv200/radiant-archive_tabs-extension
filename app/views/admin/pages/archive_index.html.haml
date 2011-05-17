@@ -12,7 +12,7 @@
             %th.status= t('status')
           - sitemap_head.actions_column_header do
             %th.actions= t('modify')
-    %tbody#extract
+    %tbody
       - if models
         - models.each do |child|
           = render_node child
