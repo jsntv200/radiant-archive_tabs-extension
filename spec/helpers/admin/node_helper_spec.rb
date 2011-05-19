@@ -2,7 +2,7 @@ require File.dirname(__FILE__) + "/../../spec_helper"
 
 describe Admin::NodeHelper do
   before :each do
-    @extract = mock_model(ExtractPage)
+    @extract = mock_model(ArchivePage)
     @extract.stub!(:extracted?).and_return(true)
   end
 

@@ -32,28 +32,22 @@ describe Admin::PagesController do
 
   describe "viewing the admin extract index" do
     before :each do
-      Radiant::Config['admin.extract.per_page'] = 23
-      get :index, :page_id => ExtractPage.first.id
+      get :index, :page_id => ArchivePage.first.id
     end
 
     it "should be an ExtractPage" do
       response.should be_success
-      assigns(:page).should be_kind_of(ExtractPage)
+      assigns(:page).should be_kind_of(ArchivePage)
     end
 
-    it "should render the index_extract template" do
+    it "should render the archive_index template" do
       response.should be_success
-      response.should render_template('extract_index')
+      response.should render_template('archive_index')
     end
 
     it "should be paginated" do
       response.should be_success
       controller.paginated?.should be_true 
-    end
-
-    it "should override defaults with extract pagination settings from config" do
-      response.should be_success
-      controller.pagination_parameters.should == {:page => 1, :per_page => 23}
     end
   end
 end
