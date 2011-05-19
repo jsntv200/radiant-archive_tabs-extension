@@ -9,7 +9,6 @@ It's a monkey patch so use at your own risk.
 
 == To Do
 
-- Finish specs.
-- Enable roles so only Admin / Desing can create Extract Pages types. (allowed_children)
+- Fix cancel js, this observe is picking up the popup close event
 - Add search filter ?
-- Look into why will_paginate isn't creating the correct urls
+- Look into why will_paginate isn't creating the correct urls, currently using a js hack to fix this
