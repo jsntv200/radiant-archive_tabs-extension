@@ -9,6 +9,5 @@ It's a monkey patch so use at your own risk.
 
 == To Do
 
-- Fix cancel js, this observe is picking up the popup close event
 - Add search filter ?
 - Look into why will_paginate isn't creating the correct urls, currently using a js hack to fix this
