@@ -47,7 +47,7 @@ module RadiantExtractExtension
           end
 
           parts
-       else
+        else
           index_page_for_model_without_extract
         end
       end
