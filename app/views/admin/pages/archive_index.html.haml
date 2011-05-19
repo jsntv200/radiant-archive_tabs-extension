@@ -29,9 +29,7 @@
 
 :javascript
   function redirect_pagination(element) {
-    // TODO: Should be able to handle this in will_paginate
-    var element = Event.element(event);
-    window.location = element.readAttribute('href').replace('.html', '')
+    window.location = Event.element(event).readAttribute('href').replace('.html', '')
     event.stop()
   }
 

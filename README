@@ -1,15 +1,15 @@
-= Extract
+= Extract Archive
 
-Extract a pages children into it's own paginated tab. Words best for pages like News that can get many children and require a paginated insterface in the admin.
+Archive page types often contain the most child page which can get messy in Radiant's tree based navigation. Extract Archive pulls the children into their own padinated tab.
 
-Once set the children will no longer display in the default Radiant Admin but within it's own paginated tab.
+Once set the Archive's children will no longer display in the Radiant tree navigation. The children of an Archive can no longer create their own children.
 
 It's a monkey patch so use at your own risk.
 
 
-= To Do
+== To Do
 
-- Write specs.
+- Finish specs.
 - Enable roles so only Admin / Desing can create Extract Pages types. (allowed_children)
-- Redirect on Save / Cancel to the correct page.
 - Add search filter ?
+- Look into why will_paginate isn't creating the correct urls
