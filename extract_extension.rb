@@ -10,12 +10,12 @@ class ExtractExtension < Radiant::Extension
   def activate
     Admin::NodeHelper.send :include, RadiantExtractExtension::Admin::NodeHelper
     Admin::PagesController.send :include, RadiantExtractExtension::Admin::PagesController
-    admin.page.edit.add :main, 'cancel', :after => 'form_bottom'
+    admin.page.edit.add :main, 'redirect_cancel', :after => 'form_bottom'
     content_tab if Page.table_exists?
   end
 
   def content_tab
-    if pages = Page.find(:all, :order => "slug DESC", :conditions => ["class_name = ?", "ArchivePage"])
+    if pages = ArchivePage.find(:all, :order => "slug DESC")
       tab 'Content' do
         pages.each do |page|
           add_item page.title, "/admin/pages/#{page.id}/children"
