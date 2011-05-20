@@ -11,7 +11,7 @@ class ArchiveTabsExtension < Radiant::Extension
     Admin::NodeHelper.send :include, RadiantArchiveTabsExtension::Admin::NodeHelper
     Admin::PagesController.send :include, RadiantArchiveTabsExtension::Admin::PagesController
     admin.page.edit.add :main, 'redirect_cancel', :after => 'form_bottom'
-    content_tab if Page.table_exists?
+    content_tab if defined?(ArchivePage) #Page.table_exists?
   end
 
   def content_tab
