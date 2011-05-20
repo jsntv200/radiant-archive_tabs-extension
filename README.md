@@ -1,4 +1,4 @@
-= Archive Tabs
+# Archive Tabs
 
 Display Archive pages in their own paginated tab.
 
@@ -9,28 +9,28 @@ Archive pages will no longer display their children on the main Pages index page
 It's a monkey patch so use at your own risk.
 
 
-== Installation
+## Installation
 
-- Install the Gem
+Install the Gem :
 
 ```
 gem install radiant-archive_tabs-extension
 ```
 
-- Ensure Archive Tabs is loaded last
+Ensure Archive Tabs is loaded last :
 
 ```
 config.extensions = [ :all, :archive_tabs ]
 ```
 
-- Load Archive Tabs by adding the gem
+Load Archive Tabs by adding the gem :
 
 ```
 config.gem 'radiant-archive_tabs-extension', :version => '1.0.0'
 ```
 
 
-== To Do
+## To Do
 
 - Add search filter ?
 - Look into why will_paginate isn't creating the correct urls, currently using a js hack to fix this
