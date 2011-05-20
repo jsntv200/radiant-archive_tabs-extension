@@ -6,12 +6,14 @@ Archive page types often contain the most child pages, with Radiant's tree based
 
 Archive pages will no longer display their children on the main Pages index page.
 
+Tested against Radiant v1.0.0 and probably won't be back ported to older versions
+
 It's a monkey patch so use at your own risk.
 
 
 ## Installation
 
-Install the Gem :
+Install as a gem :
 
 ```
 gem install radiant-archive_tabs-extension
