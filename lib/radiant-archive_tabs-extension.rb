@@ -1,0 +1,2 @@
+module RadiantArchiveTabsExtension
+end

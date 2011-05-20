@@ -1,4 +1,4 @@
-class ExtractPagesDataset < Dataset::Base
+class ArchivePagesDataset < Dataset::Base
   uses :home_page
 
   def load

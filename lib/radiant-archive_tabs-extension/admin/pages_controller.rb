@@ -1,4 +1,4 @@
-module RadiantExtractExtension
+module RadiantArchiveTabsExtension
   module Admin
     module PagesController
       def self.included(base)

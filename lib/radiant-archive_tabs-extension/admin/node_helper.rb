@@ -1,4 +1,4 @@
-module RadiantExtractExtension
+module RadiantArchiveTabsExtension
   module Admin
     module NodeHelper
       def self.included(base)
