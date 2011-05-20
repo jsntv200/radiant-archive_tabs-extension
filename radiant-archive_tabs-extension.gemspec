@@ -18,7 +18,14 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.post_install_message = %{
-  Add this to your radiant project with:
+  Edit your Radiant environment.rb file and add the following :
+
+  1. Ensure Archive Tabs is loaded last
+
+    config.extensions = [ :all, :archive_tabs ]
+
+  2. Load Archive Tabs by adding the gem
+
     config.gem 'radiant-archive_tabs-extension', :version => '#{RadiantArchiveTabsExtension::VERSION}'
   }
 end
