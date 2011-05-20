@@ -11,11 +11,11 @@ class ArchiveTabsExtension < Radiant::Extension
     Admin::NodeHelper.send :include, RadiantArchiveTabsExtension::Admin::NodeHelper
     Admin::PagesController.send :include, RadiantArchiveTabsExtension::Admin::PagesController
     admin.page.edit.add :main, 'redirect_cancel', :after => 'form_bottom'
-    content_tab if defined?(ArchivePage) #Page.table_exists?
+    content_tab if Page.table_exists?
   end
 
   def content_tab
-    if pages = ArchivePage.find(:all, :order => "slug DESC")
+    if pages = Page.find(:all, :order => "slug DESC", :conditions => ["class_name = ?", "ArchivePage"])
       tab 'Content' do
         pages.each do |page|
           add_item page.title, "/admin/pages/#{page.id}/children"
