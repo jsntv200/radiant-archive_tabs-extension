@@ -54,7 +54,7 @@ module RadiantArchiveTabsExtension
 
       # TODO: Probably a better way to do this but it works
       def acts_as_tree_options
-        Page.acts_as_tree :order => 'published_at DESC'
+        Page.acts_as_tree :order => 'virtual ASC, published_at DESC'
       end
     end
   end
