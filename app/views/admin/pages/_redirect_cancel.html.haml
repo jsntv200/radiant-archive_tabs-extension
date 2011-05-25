@@ -1,7 +1,7 @@
-- if extracted?(model.parent)
+- if archive_page?(model.parent)
   :javascript
     function redirect_cancel(event) {
-      window.location = "#{url_for index_page_for_model_with_extract}"
+      window.location = "#{url_for index_page_for_model_with_archive}"
       event.stop()
     }
 

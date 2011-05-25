@@ -2,7 +2,8 @@ module RadiantArchiveTabsExtension
   module ApplicationHelper
     def self.included(base)
       base.class_eval do
-        def extracted?(page)
+        # TODO: duplicated in pages_controller
+        def archive_page?(page)
           page.class == ArchivePage
         end
 
@@ -11,8 +12,8 @@ module RadiantArchiveTabsExtension
     end
 
     def current_url_with_archive?(options)
-      if extracted?(current_object.parent)
-        parent_url = url_for index_page_for_model_with_extract
+      if archive_page?(current_object.parent)
+        parent_url = url_for index_page_for_model_with_archive
 
         url = case options
         when Hash
@@ -28,4 +29,3 @@ module RadiantArchiveTabsExtension
     end
   end
 end
-
