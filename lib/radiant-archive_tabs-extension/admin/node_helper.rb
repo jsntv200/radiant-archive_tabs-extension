@@ -3,11 +3,6 @@ module RadiantArchiveTabsExtension
     module NodeHelper
       def self.included(base)
         base.class_eval do
-          # TODO: duplicated in pages_controller
-          def extracted?(page)
-            page.class == ArchivePage
-          end
-
           alias_method_chain :expanded, :extract
           alias_method_chain :expander, :extract
           alias_method_chain :children_class, :extract
