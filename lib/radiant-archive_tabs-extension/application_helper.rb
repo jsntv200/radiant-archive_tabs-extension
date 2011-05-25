@@ -12,7 +12,7 @@ module RadiantArchiveTabsExtension
     end
 
     def current_url_with_archive?(options)
-      if archive_page?(current_object.parent)
+      if current_object.respond_to?(:parent) && archive_page?(current_object.parent)
         parent_url = url_for index_page_for_model_with_archive
 
         url = case options
