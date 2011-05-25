@@ -1,4 +1,5 @@
 require 'radiant-archive_tabs-extension/version'
+require 'radiant-archive_tabs-extension/application_helper'
 require 'radiant-archive_tabs-extension/admin/node_helper'
 require 'radiant-archive_tabs-extension/admin/pages_controller'
 
@@ -8,6 +9,7 @@ class ArchiveTabsExtension < Radiant::Extension
   url "http://github.com/jsntv200/radiant-archive_tabs-extension"
 
   def activate
+    ApplicationHelper.send :include, RadiantArchiveTabsExtension::ApplicationHelper
     Admin::NodeHelper.send :include, RadiantArchiveTabsExtension::Admin::NodeHelper
     Admin::PagesController.send :include, RadiantArchiveTabsExtension::Admin::PagesController
 
