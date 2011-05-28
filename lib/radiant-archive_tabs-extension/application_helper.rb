@@ -12,8 +12,10 @@ module RadiantArchiveTabsExtension
     end
 
     def current_url_with_archive?(options)
-      if current_object.respond_to?(:parent) && archive_page?(current_object.parent)
-        parent_url = url_for index_page_for_model_with_archive
+      if respond_to?(:current_object) && current_object.respond_to?(:parent) && archive_page?(current_object.parent)
+        # get the index url without pagination variables
+        parent_url = index_page_for_model_with_archive
+        parent_url.delete(:p)
 
         url = case options
         when Hash
@@ -22,7 +24,7 @@ module RadiantArchiveTabsExtension
           options.to_s
         end
 
-        parent_url == clean(url)
+        clean(url_for parent_url) == clean(url)
       else
         current_url_without_archive?(options)
       end
