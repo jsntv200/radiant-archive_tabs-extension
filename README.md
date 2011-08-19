@@ -13,26 +13,27 @@ It's a monkey patch so use at your own risk.
 
 ## Installation
 
-Install as a gem :
+
+Add the gem to your Gemfile :
 
 ```
-gem install radiant-archive_tabs-extension
+gem "radiant-filter_toolbars-extension", "~> 1.0.3"
 ```
 
-Ensure Archive Tabs is loaded last :
+Update your bundle :
+
+```
+$ bundle install
+```
+
+Ensure Archive Tabs loads last :
 
 ```
 config.extensions = [ :all, :archive_tabs ]
 ```
 
-Load Archive Tabs by adding the gem :
-
-```
-config.gem 'radiant-archive_tabs-extension', :version => '1.0.0'
-```
-
 
 ## To Do
 
-- Add search filter ?
+- Add a search filter
 - Look into why will_paginate isn't creating the correct urls, currently using a js hack to fix this
