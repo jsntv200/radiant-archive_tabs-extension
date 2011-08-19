@@ -1,12 +1,11 @@
-require 'radiant-archive_tabs-extension/version'
 require 'radiant-archive_tabs-extension/application_helper'
 require 'radiant-archive_tabs-extension/admin/node_helper'
 require 'radiant-archive_tabs-extension/admin/pages_controller'
 
 class ArchiveTabsExtension < Radiant::Extension
-  version RadiantArchiveTabsExtension::VERSION
-  description "Display Archive pages in their own paginated tab"
-  url "http://github.com/jsntv200/radiant-archive_tabs-extension"
+  version     RadiantArchiveTabsExtension::VERSION
+  description RadiantArchiveTabsExtension::DESCRIPTION
+  url         RadiantArchiveTabsExtension::URL
 
   def activate
     ApplicationHelper.send :include, RadiantArchiveTabsExtension::ApplicationHelper
