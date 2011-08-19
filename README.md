@@ -17,7 +17,7 @@ It's a monkey patch so use at your own risk.
 Add the gem to your Gemfile :
 
 ```
-gem "radiant-filter_toolbars-extension", "~> 1.0.3"
+gem "radiant-filter_toolbars-extension", "~> 1.0.4"
 ```
 
 Update your bundle :
