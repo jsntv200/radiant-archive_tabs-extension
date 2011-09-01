@@ -1,4 +1,4 @@
-module RadiantArchiveTabsExtension
+module ArchiveTabs
   module ApplicationHelper
     def self.included(base)
       base.class_eval do

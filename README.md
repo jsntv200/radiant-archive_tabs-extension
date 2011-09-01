@@ -17,7 +17,7 @@ It's a monkey patch so use at your own risk.
 Add the gem to your Gemfile :
 
 ```
-gem "radiant-filter_toolbars-extension", "~> 1.0.4"
+gem "radiant-filter_toolbars-extension", "~> 1.0.5"
 ```
 
 Update your bundle :
@@ -26,7 +26,7 @@ Update your bundle :
 $ bundle install
 ```
 
-Ensure Archive Tabs loads last :
+Ensure it loads last :
 
 ```
 config.extensions = [ :all, :archive_tabs ]

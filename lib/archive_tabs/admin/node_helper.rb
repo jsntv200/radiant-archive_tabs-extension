@@ -1,4 +1,4 @@
-module RadiantArchiveTabsExtension
+module ArchiveTabs
   module Admin
     module NodeHelper
       def self.included(base)

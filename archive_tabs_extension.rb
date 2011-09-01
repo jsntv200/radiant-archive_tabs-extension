@@ -1,6 +1,4 @@
-require 'radiant-archive_tabs-extension/application_helper'
-require 'radiant-archive_tabs-extension/admin/node_helper'
-require 'radiant-archive_tabs-extension/admin/pages_controller'
+require 'radiant-archive_tabs-extension'
 
 class ArchiveTabsExtension < Radiant::Extension
   version     RadiantArchiveTabsExtension::VERSION
