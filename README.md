@@ -26,13 +26,6 @@ Update your bundle :
 $ bundle install
 ```
 
-Ensure it loads last :
-
-```
-config.extensions = [ :all, :archive_tabs ]
-```
-
-
 ## To Do
 
 - Add a search filter
