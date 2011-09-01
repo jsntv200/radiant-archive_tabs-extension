@@ -17,10 +17,11 @@ module ArchiveTabs
 
       def load_models_with_archive
         if params[:page_id]
+          acts_as_tree_options
+
           self.model = Page.find(params[:page_id])
 
           if archive_page?(self.model)
-            acts_as_tree_options
             self.class.paginate_models :per_page => Radiant.config['admin.pagination.per_page']
           end
         end
