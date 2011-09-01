@@ -6,9 +6,9 @@ class ArchiveTabsExtension < Radiant::Extension
   url         RadiantArchiveTabsExtension::URL
 
   def activate
-    ApplicationHelper.send :include, RadiantArchiveTabsExtension::ApplicationHelper
-    Admin::NodeHelper.send :include, RadiantArchiveTabsExtension::Admin::NodeHelper
-    Admin::PagesController.send :include, RadiantArchiveTabsExtension::Admin::PagesController
+    ApplicationHelper.send :include, ArchiveTabs::ApplicationHelper
+    Admin::NodeHelper.send :include, ArchiveTabs::Admin::NodeHelper
+    Admin::PagesController.send :include, ArchiveTabs::Admin::PagesController
 
     admin.page.edit.add :main, 'redirect_cancel', :after => 'form_bottom'
 
