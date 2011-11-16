@@ -7,6 +7,8 @@ class ArchiveTabsExtension < Radiant::Extension
 
   def activate
     ApplicationHelper.send :include, ArchiveTabs::ApplicationHelper
+    MenuRenderer.send :include, ArchiveTabs::Admin::MenuRenderer
+
     Admin::NodeHelper.send :include, ArchiveTabs::Admin::NodeHelper
     Admin::PagesController.send :include, ArchiveTabs::Admin::PagesController
 

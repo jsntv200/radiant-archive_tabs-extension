@@ -6,7 +6,6 @@ module ArchiveTabs
           alias_method_chain :expanded, :archive
           alias_method_chain :expander, :archive
           alias_method_chain :children_class, :archive
-          # alias_method_chain :children_for, :archive
         end
       end
 
@@ -24,11 +23,6 @@ module ArchiveTabs
       def children_class_with_archive
         archive_page?(@current_node) ? ' no_children' : children_class_without_archive
       end
-
-      # Disable adding children on the index page, admin/pages/:page_id/children
-      # def children_for_with_archive(page)
-      #   page.respond_to?(:parent) && archive_page?(page.parent) ? [] : children_for_without_archive(page)
-      # end
     end
   end
 end
